@@ -6,7 +6,7 @@ import CameraScanner from './components/CameraScanner';
 export default function Home() {
   const handleScanComplete = (imageSrc: string) => {
     console.log('تم مسح الصورة بنجاح:', imageSrc);
-    alert('✅ تم التقاط الصورة بنجاح!\n\nسيتم معالجة الصورة واستخراج النص (OCR) قريباً');
+    alert('✅ تم التقاط الصورة بنجاح!\n\nسيتم معالجة الصورة واستخراج النص (OCR) قريباً إن شاء الله');
   };
 
   const handleFileUpload = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -42,4 +42,20 @@ export default function Home() {
                 className="hidden"
               />
             </label>
-            <p className="text-sm text-gray-
+            <p className="text-sm text-gray-500 mt-4">يدعم: PDF، JPG، PNG</p>
+          </div>
+
+          {/* مسح بالكاميرا */}
+          <div className="bg-white rounded-3xl shadow p-8">
+            <h2 className="text-2xl font-semibold text-center mb-8">أو مسح المستند بالكاميرا</h2>
+            <CameraScanner onScanComplete={handleScanComplete} />
+          </div>
+        </div>
+
+        <div className="text-center mt-16 text-sm text-gray-500">
+          النسخة الأولى (MVP) — جاري إضافة OCR وميزات أخرى
+        </div>
+      </div>
+    </div>
+  );
+}
