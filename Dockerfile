@@ -5,19 +5,18 @@ WORKDIR /app
 # Copy package files
 COPY package*.json ./
 
-# Install dependencies with npm install (أكثر مرونة)
-RUN npm install --production
+# Install dependencies
+RUN npm install
 
 # Copy all files
 COPY . .
 
-# Build the app
+# Build the application
 RUN npm run build
 
-# Production stage
+# Production
 ENV NODE_ENV=production
 ENV PORT=3000
-ENV HOSTNAME=0.0.0.0
 
 EXPOSE 3000
 
